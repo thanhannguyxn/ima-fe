@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import theme from './theme';
+
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import ProductsPage from './pages/ProductsPage.jsx';
+import InventoryInPage from './pages/InventoryInPage';
+import InventoryOutPage from './pages/InventoryOutPage.jsx';
+import ReportsPage from './pages/ReportsPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/inventory/in" element={<InventoryInPage />} />
+          <Route path="/inventory/out" element={<InventoryOutPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
+
