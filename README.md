@@ -2,7 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Setup module for project:
+Create and setup module for project:
+### `npm install` or `npx create-react-app ima-fe`
 ### `npm install @mui/material @emotion/react @emotion/styled react-router-dom axios`
 
 
