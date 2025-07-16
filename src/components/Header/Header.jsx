@@ -12,6 +12,7 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './Header.module.css';
+import Cookies from 'js-cookie';
 
 const navItems = [
   { label: 'Dashboard', path: '/dashboard' },
@@ -29,6 +30,7 @@ const Header = () => {
   const handleMenuOpen = (event) => setAnchorEl(event.currentTarget);
   const handleMenuClose = () => setAnchorEl(null);
   const handleLogout = () => {
+    Cookies.remove('token'); // Remove token from cookies
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     window.location.href = '/';

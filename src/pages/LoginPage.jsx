@@ -1,12 +1,21 @@
 import LoginForm from '../components/LoginForm';
-import authService from '../authorization/authService';
-import { useState } from 'react';
+import authService from '../components/authorization/authService';
+import { use, useState, useEffect } from 'react';
 import { Snackbar, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [snack, setSnack] = useState({ open: false, message: '', severity: 'success' });
+
+  useEffect(() => {
+    // Check if the user is already logged in
+    const token = Cookies.get('token');
+    if (token) {
+      navigate('/dashboard'); // Redirect to dashboard if already logged in
+    }
+  }, [navigate]);
 
   const handleLogin = async (credentials) => {
     try {
