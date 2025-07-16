@@ -8,6 +8,7 @@ import ProductsPage from './pages/ProductsPage.jsx';
 import InventoryInPage from './pages/InventoryInPage';
 import InventoryOutPage from './pages/InventoryOutPage.jsx';
 import ReportsPage from './pages/ReportsPage';
+import ProtectedRoute from './components/route/ProtectedRoute'; 
 
 function App() {
   return (
@@ -16,11 +17,46 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/inventory/in" element={<InventoryInPage />} />
-          <Route path="/inventory/out" element={<InventoryOutPage />} />
-          <Route path="/reports" element={<ReportsPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/products"
+            element={
+              <ProtectedRoute>
+                <ProductsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/inventory/in"
+            element={
+              <ProtectedRoute>
+                <InventoryInPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/inventory/out"
+            element={
+              <ProtectedRoute>
+                <InventoryOutPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute>
+                <ReportsPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </ThemeProvider>
