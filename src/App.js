@@ -9,6 +9,7 @@ import InventoryInPage from './pages/InventoryInPage';
 import InventoryOutPage from './pages/InventoryOutPage.jsx';
 import ReportsPage from './pages/ReportsPage';
 import ProtectedRoute from './components/route/ProtectedRoute'; 
+import NotFoundPage from './pages/NotFoundPage.jsx';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </ThemeProvider>
